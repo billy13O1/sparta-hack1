@@ -17,7 +17,7 @@ import { Button } from "./button";
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/admin/home",
     icon: Home,
   },
   {
@@ -58,7 +58,7 @@ export function AppSidebar() {
           <SidebarGroupLabel>
             <LogIn></LogIn>
             <div className="ml-2 text-lg">
-                REFRESH FOOD
+                Table Share
             </div>
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -90,7 +90,15 @@ export function AppSidebar() {
         
       </SidebarContent>
 
-      <Button variant = "destructive" onClick={() => router.push('/logIn')} className="align-bottom h-12 px-4 m-1 text-lg ">Sign Out</Button>
+        <div className="flex justify-start">
+          <Button
+            variant="ghost"
+            onClick={() => router.push('/logIn')}
+            className="align-bottom h-12 mb-1 text-lg text-gray"
+          >
+            <p>Sign out</p>
+          </Button>
+        </div>
     </Sidebar>
   )
 }
