@@ -25,11 +25,11 @@ async function getMetrics(facility: string, location: string) {
     const database = client.db(facility);
     const document = database.collection(location);
     const options = {
-    
+        
     };
     const cursor = document.find(options);
     for await (const doc of cursor) {
-        console.dir(doc);
+        return {flow: doc.flow, waste: doc.waste, input: doc.input};
     }
 }
 
