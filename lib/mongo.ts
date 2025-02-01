@@ -19,7 +19,7 @@ await client.db("admin").command({ ping: 1 });
 
 console.log("here");
 
-const addLocation = async (facility: string, location: string) => {
+async function addLocation(facility: string, location: string) {
     const database = client.db(facility);
     const document = database.collection(location);
     // Create a document to insert
@@ -31,4 +31,17 @@ const addLocation = async (facility: string, location: string) => {
     console.log(result);
 }
 
-export { addLocation };
+function getLocation(facility: string, location: string) {
+    const database = client.db(facility);
+    const document = database.collection(location);
+    const options = {
+
+    };
+    const cursor = document.find(options);
+    return cursor;
+    // for await (const doc of cursor) {
+    //     console.dir(doc);
+    // }
+}
+
+export { addLocation, getLocation };
