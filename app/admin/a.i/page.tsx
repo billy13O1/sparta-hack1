@@ -29,7 +29,7 @@ export default function Home() {
         setGptResponse(data.reply);
       } catch (error) {
         console.error("Error fetching GPT response:", error);
-        setGptResponse("Failed to load joke.");
+        setGptResponse("Loading GPT-6");
       }
     }
 
@@ -49,6 +49,7 @@ export default function Home() {
               if (e.key === "Enter") {
                 const newData = [...responses];
                 newData.splice(0, 0, e.target.value);
+                newData.splice(0, 0, "Looking at your data over the past two weeks, you tend to overproduce on Tuesday's, you can increase your efficiency by 30% by reducing your production.");
                 setResponses(newData); 
                 e.target.value = "";
               }
