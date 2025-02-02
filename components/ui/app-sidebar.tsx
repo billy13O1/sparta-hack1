@@ -22,7 +22,7 @@ const items = [
   },
   {
     title: "Dashboard",
-    url: "/admin/home",
+    url: "/admin/dashboard",
     icon: LayoutDashboard,
   },
   {

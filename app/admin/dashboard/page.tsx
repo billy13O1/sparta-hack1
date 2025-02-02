@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { AreaChartStacked } from "../home/components/area-chart";
+import { AreaChartStacked } from "../dashboard/components/area-chart";
 import { getMetrics } from "@/lib/mongo";
 import {
   Select,

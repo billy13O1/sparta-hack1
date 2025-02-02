@@ -12,7 +12,14 @@ import {
     getPaginationRowModel,
     getSortedRowModel,
     useReactTable,
-  } from "@tanstack/react-table"
+  } from "@tanstack/react-table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input"
 
 import {
@@ -33,13 +40,19 @@ type DataTableProps<TData, TValue> = {
   data: TValue,
   addRow: (itemName: string, quantity: string, location: string, category: string, time: string) => void,
   updateData: () => void,
+  updateLocation: () => void,
 }
-export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: Readonly<DataTableProps<TData, TValue>>) {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+export function DataTable<TData, TValue>({ columns, data, addRow, updateData, updateLocation }: Readonly<DataTableProps<TData, TValue>>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [selectedLocation, setSelectedLocation] = React.useState<string>("case");
   
+  React.useEffect(() => {
+    updateLocation(selectedLocation);
+  }, [selectedLocation])
+
   const table = useReactTable({
     data,
     columns,
@@ -75,16 +88,30 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: 
         </div>
 
       </div>
-      <div className="flex flex-row space-x-2 justify-end mb-[-34px]">
+      <div className="flex flex-row space-x-2 justify-end mb-[-70px] mt-7">
         <Button className="w-40 bg-purple1" onClick={() => {
-          addRow("Z", "100", "case", "idk", "now");
+          addRow("Z", "100", selectedLocation, "idk", "now");
         }}>Add New Item</Button>
-        <ImportButton updateData={updateData} />
+        <ImportButton updateData={updateData} location={selectedLocation} />
         
         </div>
       <div className="rounded-md mt-10">
-        
-        <h1 className="m-5 text-[16px] font-medium text-white">All Items</h1>
+        <div className="flex flex-row gap-4 ml-8 text-gray-400">
+          <h1 className="m-1 text-[16px] font-medium text-white">All Items</h1>
+          {/* Select Location */}
+          <Select onValueChange={(value) => setSelectedLocation(value)}>
+            <SelectTrigger className="w-[200px] bg-color4">
+              <SelectValue  className = "bg-color4 "placeholder="⚲ Select Location" />
+            </SelectTrigger>
+            <SelectContent className="bg-color4">
+              <SelectItem className = "text-white bg-color4" value="case">Case Dining Hall</SelectItem>
+              <SelectItem  className = "text-white bg-color4"value="shaw">Shaw Dining Hall</SelectItem>
+              <SelectItem  className = "text-white bg-color4"value="brody">Brody Dining Hall</SelectItem>
+              <SelectItem  className = "text-white bg-color4"value="synder">Synder Phillips Dining Hall</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         {/* <hr className="border-purpleLight"></hr> */}
         <Table>
           <TableHeader className="group/item">

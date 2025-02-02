@@ -3,7 +3,7 @@ import { saveCSV } from "@/lib/mongo";
 import { Button } from "./ui/button";
 import { useRef } from "react";
 
-export default function ImportButton({updateData}) {
+export default function ImportButton({updateData, location}) {
     const inputRef = useRef<null | HTMLInputElement>(null);
 
     const processCSV = (csvData: string) => {
@@ -34,7 +34,7 @@ export default function ImportButton({updateData}) {
                 processed += 1;
                 if (processed === event.target.files.length) {
                     console.log(csvFiles);
-                    await saveCSV("MSU", "case", csvFiles);
+                    await saveCSV("MSU", location, csvFiles);
                     updateData();
                     if (inputRef.current !== null) {
                         inputRef.current.value = "";
