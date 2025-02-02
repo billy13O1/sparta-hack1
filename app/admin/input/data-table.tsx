@@ -43,6 +43,7 @@ import {
 
 import { DataTablePagination } from "./DataTablePagination"
 import ImportButton from "@/components/ImportButton"
+import { LOCATION_NAME_MAP } from "@/lib/constants";
 
 type DataTableProps<TData, TValue> = {
   columns: TData, 
@@ -58,6 +59,12 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
   const [rowSelection, setRowSelection] = React.useState({});
   const [selectedLocation, setSelectedLocation] = React.useState<string>("case");
   
+  const [name, setName] = React.useState("");
+  const [category, setCategory] = React.useState("");
+  const [amount, setAmount] = React.useState("");
+  const [time, setTime] = React.useState("");
+  const [isOpen, setIsOpen] = React.useState(false);
+
   React.useEffect(() => {
     updateLocation(selectedLocation);
   }, [selectedLocation])
@@ -98,45 +105,54 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
 
       </div>
       <div className="flex flex-row space-x-2 justify-end mb-[-70px] mt-7">
-      <Dialog>
+      <Dialog open={isOpen}>
         <DialogTrigger asChild>
-          <Button className="w-40 bg-purple1">Add New Item</Button>
+          <Button onClick={() => {
+            setIsOpen(true);
+          }}  className="w-40 bg-purple1">Add New Item</Button>
         </DialogTrigger>
-        <DialogContent className="p-6 bg-white rounded-lg shadow-lg">
+        <DialogContent className="p-6 bg-black12 text-white rounded-lg shadow-lg">
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-gray-800">Input Fields</DialogTitle>
-            <DialogDescription className="text-sm text-gray-600">
+            <DialogTitle className="text-xl font-semibold text-white">Input Fields</DialogTitle>
+            <DialogDescription className="text-sm text-white">
               Please fill in the details below.
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4 space-y-4">
             <div>
-              <label htmlFor="item-name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="item-name" className="block text-sm font-medium text-white">
                 Item Name
               </label>
-              <Input id="item-name" placeholder="Enter item name" className="mt-1 w-full" />
+              <Input id="item-name" onChange={(e) => {
+                setName(e.target.value)
+                }} placeholder="Enter item name" className="mt-1 w-full" />
             </div>
 
             <div>
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="category" className="block text-sm font-medium text-white">
                 Category
               </label>
-              <Input id="category" placeholder="Enter category" className="mt-1 w-full" />
+              <Input id="category"  onChange={(e) => {
+                setCategory(e.target.value)
+                }} placeholder="Enter category" className="mt-1 w-full" />
             </div>
 
             <div>
-              <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="quantity" className="block text-sm font-medium text-white">
                 Quantity
               </label>
-              <Input id="quantity" type="number" placeholder="Enter quantity" className="mt-1 w-full" />
+              <Input id="quantity" onChange={(e) => {
+                setAmount(e.target.valueAsNumber.toString())
+              }
+                } type="number" placeholder="Enter quantity" className="mt-1 w-full" />
             </div>
 
-            <div>
+            {/* <div>
               <label htmlFor="location" className="block text-sm font-medium text-gray-700">
                 Location
               </label>
               <Input id="location" placeholder="Enter location" className="mt-1 w-full" />
-            </div>
+            </div> */}
 
             <div>
               <label htmlFor="time" className="block text-sm font-medium text-gray-700">
@@ -144,22 +160,32 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
               </label>
               <Input
                 id="time"
-                type="time"
+                type="date"
                 className="mt-1 w-full"
+                onChange={(e) => {
+                  setTime(e.target.value);
+                }}
               />
             </div>
           </div>
 
           <div className="flex justify-end space-x-2 mt-6">
             <Button
-              className="bg-red-600 text-white"
-              onClick={() => addRow("Z", "100", selectedLocation, "idk", "now")}
-            >
+              className="bg-purple1 text-white"
+              onClick={() => {
+                addRow(name, amount, LOCATION_NAME_MAP[selectedLocation], category, time);
+                setIsOpen(false);
+              }}
+              >
               Confirm
             </Button>
             <Button
-              className="bg-gray-400 text-black"
-              onClick={() => document.activeElement.blur()}
+              className="bg-purpleLight text-white"
+              onClick={() => {
+                // document.activeElement.blur()
+                setIsOpen(false);
+
+              }}
             >
               Cancel
             </Button>
