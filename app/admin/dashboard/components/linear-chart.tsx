@@ -129,7 +129,7 @@ const chartConfig = {
   },
   mobile: {
     label: "Pounds",
-    color: "#0F0",
+    color: "#FF0",
   },
 } satisfies ChartConfig
 

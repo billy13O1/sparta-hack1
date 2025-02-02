@@ -85,7 +85,7 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
 
   return (
     <div>
-      <div className="flex items-center">
+      <div className="flex items-center mb-10">
       <p className="whitespace-nowrap mr-10 text-[20px] text-white font-semibold">
         Item List
         </p>
@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
 
       </div>
       <div className="flex flex-row space-x-2 justify-end mb-[-70px] mt-7">
-      <Dialog open={isOpen}>
+      {/* <Dialog open={isOpen}>
         <DialogTrigger asChild>
           <Button onClick={() => {
             setIsOpen(true);
@@ -154,7 +154,7 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
               <Input id="location" placeholder="Enter location" className="mt-1 w-full" />
             </div> */}
 
-            <div>
+            {/* <div>
               <label htmlFor="time" className="block text-sm font-medium text-gray-700">
                 Time
               </label>
@@ -192,12 +192,11 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
           </div>
         </DialogContent>
       </Dialog>
-        <ImportButton updateData={updateData} location={selectedLocation} />
-        
+        <ImportButton updateData={updateData} location={selectedLocation} /> */}        
         </div>
       <div className="rounded-md mt-10">
         <div className="flex flex-row gap-4 ml-8 text-gray-400">
-          <h1 className="m-1 text-[16px] font-medium text-white">All Items</h1>
+          <h1 className="ml-[1px] m-1 text-[16px] font-medium text-white">All Items</h1>
           {/* Select Location */}
           <Select onValueChange={(value) => setSelectedLocation(value)}>
             <SelectTrigger className="w-[200px] bg-color4">

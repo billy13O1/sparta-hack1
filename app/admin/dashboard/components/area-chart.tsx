@@ -21,12 +21,12 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#FF5",
+    color: "#F55",
     
   },
   mobile: {
     label: "Mobile",
-    color: "#99F",
+    color: "#9FF",
   },
 } satisfies ChartConfig
 
@@ -40,7 +40,7 @@ export function AreaChartStacked({title, description, keys, chartData}: Readonly
   return (
     <Card className="bg-color4 border-0">
       <CardHeader className="text-purpleLight">
-        <CardTitle className="text-purpleLight">{title}</CardTitle>
+        <CardTitle className="text-purpleLight mx-5">{title}</CardTitle>
         {/* <CardDescription>{description}</CardDescription> */}
       </CardHeader>
       <CardContent className="text-purpleLight">

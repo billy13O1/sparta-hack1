@@ -26,7 +26,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
   return (
     <div className="flex items-center justify-between px-2 py-4">
       {/* Left Side - Showing Row Range */}
-      <div className="text-[14px] text-muted-foreground text-white">
+      <div className="text-[14px] text-muted-foreground text-purpleLight">
         {totalRows > 0 ? `${startRow} - ${endRow} of ${totalRows}` : "No data"}
       </div>
 

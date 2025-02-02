@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { AreaChartLong, LinearChart } from "./components/linear-chart";
+import { AreaChartLong } from "./components/linear-chart";
 import { Card } from "@/components/ui/card";
 
 export default function Home() {

@@ -63,9 +63,9 @@ export function AppSidebar() {
         <SidebarGroup > 
           <SidebarGroupLabel >
             
-            <div className="text-lg text-white space-x-2">
+            <a href="/home/index.html"><div className="text-lg text-white space-x-2">
                 Table Share
-            </div>
+            </div></a>
           </SidebarGroupLabel>
           <SidebarGroupContent >
             <SidebarMenu >
