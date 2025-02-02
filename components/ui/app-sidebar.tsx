@@ -104,7 +104,7 @@ export function AppSidebar() {
           <Button
             variant="ghost"
             onClick={() => router.push('/logIn')}
-            className="align-bottom h-12 ml-5 mb-1 text-lg  group-hover/item:bg-purple1"
+            className="align-bottom h-12 ml-5 mb-1 text-m  group-hover/item:bg-purple1"
           >
             <p className="text-purpleLight group-hover/item:text-white">Sign out</p>
           </Button>
