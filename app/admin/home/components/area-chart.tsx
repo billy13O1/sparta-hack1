@@ -32,14 +32,15 @@ const chartConfig = {
 type AreaChartStackedProps = {
   title: string,
   description: string,
+  keys: string[],
   chartData: {date: string, in: number, out: number}[] | {date: string, in: number}[]
 }
-export function AreaChartStacked({title, description, chartData}: Readonly<AreaChartStackedProps>) {
+export function AreaChartStacked({title, description, keys, chartData}: Readonly<AreaChartStackedProps>) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        {/* <CardDescription>{description}</CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -55,7 +56,7 @@ export function AreaChartStacked({title, description, chartData}: Readonly<AreaC
             
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="date"
+              dataKey={keys[0]}
               tickLine={false}
               axisLine={false}
               tickMargin={16}
@@ -73,14 +74,14 @@ export function AreaChartStacked({title, description, chartData}: Readonly<AreaC
             />
             <ChartLegend content={<ChartLegendContent />} />
             <Area
-              dataKey="in"
+              dataKey={keys[1]}
               type="natural"
               fill="var(--color-mobile)"
               fillOpacity={0.4}
               stroke="var(--color-mobile)"
             />
             <Area
-              dataKey="out"
+              dataKey={keys[2]}
               type="natural"
               fill="var(--color-desktop)"
               fillOpacity={0.4}

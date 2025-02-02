@@ -28,14 +28,15 @@ const chartConfig = {
 type LinearChartStackedProps = {
     title: string,
     description: string,
+    keys: string[],
     chartData: {date: string, in: number, out: number}[] | {date: string, in: number}[]
   }
-export function LinearChart({title, description, chartData}: Readonly<LinearChartStackedProps>)  {
+export function LinearChart({title, description, keys, chartData}: Readonly<LinearChartStackedProps>)  {
   return (
     <Card>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        {/* <CardDescription>{description}</CardDescription> */}
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -49,7 +50,7 @@ export function LinearChart({title, description, chartData}: Readonly<LinearChar
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey={keys[0]}
               tickLine={false}
               axisLine={false}
               tickMargin={8}
@@ -60,7 +61,7 @@ export function LinearChart({title, description, chartData}: Readonly<LinearChar
               content={<ChartTooltipContent indicator="dot" hideLabel />}
             />
             <Area
-              dataKey="desktop"
+              dataKey={keys[1]}
               type="linear"
               fill="var(--color-desktop)"
               fillOpacity={0.4}
@@ -69,7 +70,7 @@ export function LinearChart({title, description, chartData}: Readonly<LinearChar
           </AreaChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
+      {/* <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
@@ -80,7 +81,7 @@ export function LinearChart({title, description, chartData}: Readonly<LinearChar
             </div>
           </div>
         </div>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   )
 }

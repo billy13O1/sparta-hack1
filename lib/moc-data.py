@@ -15,7 +15,7 @@ for name, halls in SCHOOLS.items():
     for hall in halls:
         folder = f"./public/{name}/{hall}/"
         # Food Input
-        data = [["date", "amount", "type"]]
+        data = [["date", "amount", "type", "category"]]
         for day in range(1, 31+1):
         # for day in range(1, 3+1):
             for _ in range(random.randint(1, 5)):

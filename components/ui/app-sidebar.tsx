@@ -17,17 +17,17 @@ import { Button } from "./button";
 const items = [
   {
     title: "Home",
-    url: "/admin/home",
+    url: "/home",
     icon: Home,
   },
   {
     title: "Dashboard",
-    url: "#",
+    url: "/admin/home",
     icon: LayoutDashboard,
   },
   {
     title: "Input",
-    url: "#",
+    url: "/admin/input",
     icon: FileInput,
   },
 //   {
@@ -37,7 +37,7 @@ const items = [
 //   },
   {
     title: "Data",
-    url: "#",
+    url: "/admin/data",
     icon: Database,
   }, 
 ];

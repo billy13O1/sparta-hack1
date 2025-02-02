@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AreaChartStacked } from "../home/components/area-chart";
 import { getMetrics } from "@/lib/mongo";
 import {
@@ -17,20 +17,37 @@ export default function Home() {
     { date: string; in: number; out: number }[]
   >([]);
   const [flowData, setFlowData] = useState<{ date: string; in: number }[]>([]);
-  const [selectedWeek, setSelectedWeek] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [trafficData, setTrafficData] = useState<{ date: string; in: number }[]>([]);
+  const [selectedWeek, setSelectedWeek] = useState("0");
+  const [selectedLocation, setSelectedLocation] = useState("case");
+  const [cleanData, setCleanData] = useState<string>("");
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekRanges = [
+    [new Date(2025, 0, 1), new Date(2025, 0, 7)],
+    [new Date(2025, 0, 8), new Date(2025, 0, 15)],
+    [new Date(2025, 0, 16), new Date(2025, 0, 24)],
+  ];
+  const linkRef = useRef<null | HTMLLinkElement>(null);
+
   useEffect(() => {
     async function getConsumptionData() {
       console.log("getting data");
-      const metrics = await getMetrics("MSU", "case");
-      console.log("data got", metrics);
+      const metrics = await getMetrics("MSU", selectedLocation);
+      console.log("data got");
 
       if (!metrics) {
         console.error("Wrong data");
         return;
       }
-      
+
+      let flowCSV: string = metrics.flow.map((row: string[]) => row.join(",")).join("\n");
+      flowCSV = "dateTime,amount\n" + flowCSV;
+      let wasteCSV: string = metrics.waste.map((row: string[]) => row.join(",")).join("\n");
+      wasteCSV = "dateTime,amount\n" + wasteCSV;
+      let inputCSV: string = metrics.input.map((row: string[]) => row.join(",")).join("\n");
+      inputCSV = "date,amount,type,category\n" + inputCSV;
+      setCleanData(flowCSV+"\n"+wasteCSV+"\n"+inputCSV);
+
       const combinedInput: { [key: string]: number } = {};
       for (const input of metrics.input) {
         if (!combinedInput[input[0]]) {
@@ -39,32 +56,77 @@ export default function Home() {
         combinedInput[input[0]] += parseInt(input[1]);
       }
 
-      const newConsumptionData: { date: string; in: number; out: number }[] =
-        [];
-      for (let i = 0; i < metrics.waste.length && i < 7; ++i) {
-        console.log(daysOfWeek[i])
-        newConsumptionData.push({
-          
-          date: daysOfWeek[i],
-          in: combinedInput[metrics.waste[i][0]],
-          out: parseInt(metrics.waste[i][1]),
+      const newConsumptionData: { date: string; in: number; out: number }[] = [];
+      for (let i = 0; i < metrics.waste.length; ++i) {
+        const dateString = metrics.waste[i][0];
+        const [year, month, day] = dateString.split("-");
+        const date = new Date(year, month-1, day);
+        const inRange = date >= weekRanges[parseInt(selectedWeek)][0] && date <= weekRanges[parseInt(selectedWeek)][1];
+        if (!inRange) {
+          continue;
+        }
+        newConsumptionData.push({  
+          Date: daysOfWeek[date.getDay()],
+          Production: combinedInput[metrics.waste[i][0]],
+          Unused: parseInt(metrics.waste[i][1]),
         });
       }
 
+      const combinedFlow: { [key: string]: number } = {};
+      for (const input of metrics.flow) {
+        if (!combinedFlow[input[0].split(":")[0]]) {
+          combinedFlow[input[0].split(":")[0]] = 0;
+        }
+        combinedFlow[input[0].split(":")[0]] += parseInt(input[1]);
+      }
+      
       const newFlowData: { date: string; in: number }[] = [];
-      for (let i = 0; i < metrics.flow.length && i < 7; ++i) {
+      const seen = new Set();
+      for (let i = 0; i < metrics.flow.length; ++i) {
+        const dateString = metrics.flow[i][0].split(":")[0];
+        if (seen.has(dateString)) {
+          continue;
+        }
+        seen.add(dateString);
+        const [year, month, day] = dateString.split("-");
+        const date = new Date(year, month-1, day);
+        const inRange = date >= weekRanges[parseInt(selectedWeek)][0] && date <= weekRanges[parseInt(selectedWeek)][1];
+        if (!inRange) {
+          continue;
+        }
         newFlowData.push({
-          date: daysOfWeek[i],
-          in: parseInt(metrics.flow[i][1]),
+          Date: daysOfWeek[date.getDay()],
+          Traffic: combinedFlow[metrics.flow[i][0].split(":")[0]],
         });
       }
-
+      
       setConsumptionData(newConsumptionData);
       setFlowData(newFlowData);
+      
+      const newTrafficData: { date: string; in: number }[] = [];
+      for (let i = 0; i < metrics.flow.length; ++i) {
+        const dateString = metrics.flow[i][0].split(":")[0];
+        const timeString = metrics.flow[i][0].split(":")[1];
+
+        const [year, month, day] = dateString.split("-");
+        const [hours, minutes] = timeString.split("-");
+        const date = new Date(year, month-1, day, hours, minutes);
+        console.log(day);
+        if (day != 1) {
+          continue;
+        }
+        newTrafficData.push({
+          Hour: parseInt(hours) < 12 ? `${date.getHours().toString()}am` : `${date.getHours().toString()-12}pm`,
+          Traffic: parseInt(metrics.flow[i][1]),
+        });
+      }
+      console.log(newTrafficData)
+      setTrafficData(newTrafficData);
     }
 
     getConsumptionData();
-  }, []);
+    
+  }, [selectedWeek, selectedLocation]);
 
   // Update descriptions dynamically based on the selected week
   const weekDescriptions = {
@@ -74,8 +136,7 @@ export default function Home() {
   };
 
   const description = weekDescriptions[selectedWeek] || "Select a week to view data";
-  console.log(consumptionData)
-  console.log(flowData)
+
   return (
     <div>
       <h1 className="ml-8 text-xl font-bold">Reports Overview</h1>
@@ -88,9 +149,9 @@ export default function Home() {
             <SelectValue placeholder="📅 Select Week" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="2024-01-01-07">January 1-7, 2024</SelectItem>
-            <SelectItem value="2024-01-08-15">January 8-15, 2024</SelectItem>
-            <SelectItem value="2024-01-16-24">January 16-24, 2024</SelectItem>
+            <SelectItem value="0">January 1-7, 2024</SelectItem>
+            <SelectItem value="1">January 8-15, 2024</SelectItem>
+            <SelectItem value="2">January 16-24, 2024</SelectItem>
           </SelectContent>
         </Select>
 
@@ -107,36 +168,43 @@ export default function Home() {
           </SelectContent>
         </Select>
         <div className="ml-auto mr-8">
-          <Button>Export Data</Button>
+          <Button onClick={() => {
+            if (linkRef.current !== null) {
+              linkRef.current.click();
+            }
+          }}>Export Data</Button>
+          <a ref={linkRef} style={{display: "none"}} href={`data:text/plain;charset=utf-8, ${encodeURIComponent(cleanData)}`} download={"export.csv"}>Test</a>
         </div>
       </div>
 
       <div className=" flex flex-row space-x-4 w-full">
         <div className="flex flex-row w-full gap-16 p-8 mt-[-20px]">
-          <div className="w-1/2 h-[400px]">
+          <div className="w-1/2">
             <AreaChartStacked
               title="Food Production vs. Food Unused"
               description={description}
               chartData={consumptionData}
-              
+              keys={["Date", "Production", "Unused"]}
             />
             
           </div>
-          <div className="w-1/2 h-[400px]">
+          <div className="w-1/2">
             <AreaChartStacked
               title="Traffic"
               description={description}
               chartData={flowData}
+              keys={["Date", "Traffic"]}
             />
           </div>
         </div>
       </div>
       <div className="h-10">
-      <div className="w-full">
+      <div className="w-full p-8">
         <LinearChart
           title="Traffic"
           description={description}
-          chartData={flowData}
+          chartData={trafficData}
+          keys={["Hour", "Traffic"]}
         />
       </div>
       </div>
