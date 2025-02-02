@@ -49,7 +49,7 @@ export default function Home() {
               if (e.key === "Enter") {
                 const newData = [...responses];
                 newData.splice(0, 0, e.target.value);
-                newData.splice(0, 0, "Looking at your data over the past two weeks, you tend to overproduce on Tuesdays, you can increase your efficiency by 30% by reducing your production");
+                newData.splice(0, 0, "Looking at your data over the past two weeks, you tend to overproduce on Tuesday's, you can increase your efficiency by 30% by reducing your production.");
                 setResponses(newData); 
                 e.target.value = "";
               }
