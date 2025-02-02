@@ -24,7 +24,7 @@ async function saveCSV(facility: string, location: string, csvData: {[key: strin
 async function getMetrics(facility: string, location: string) {
     const database = client.db(facility);
     const document = database.collection(location);
-    const cursor = document.find().sort({"created_at": 1});
+    const cursor = document.find().sort({"_id": -1});
     for await (const doc of cursor) {
         return {flow: doc.flow, waste: doc.waste, input: doc.input};
     }
