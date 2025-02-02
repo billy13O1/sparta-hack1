@@ -13,6 +13,15 @@ import {
     getSortedRowModel,
     useReactTable,
   } from "@tanstack/react-table";
+  import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+  
 import {
   Select,
   SelectContent,
@@ -89,9 +98,74 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
 
       </div>
       <div className="flex flex-row space-x-2 justify-end mb-[-70px] mt-7">
-        <Button className="w-40 bg-purple1" onClick={() => {
-          addRow("Z", "100", selectedLocation, "idk", "now");
-        }}>Add New Item</Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="w-40 bg-purple1">Add New Item</Button>
+        </DialogTrigger>
+        <DialogContent className="p-6 bg-white rounded-lg shadow-lg">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-gray-800">Input Fields</DialogTitle>
+            <DialogDescription className="text-sm text-gray-600">
+              Please fill in the details below.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <div>
+              <label htmlFor="item-name" className="block text-sm font-medium text-gray-700">
+                Item Name
+              </label>
+              <Input id="item-name" placeholder="Enter item name" className="mt-1 w-full" />
+            </div>
+
+            <div>
+              <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                Category
+              </label>
+              <Input id="category" placeholder="Enter category" className="mt-1 w-full" />
+            </div>
+
+            <div>
+              <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
+                Quantity
+              </label>
+              <Input id="quantity" type="number" placeholder="Enter quantity" className="mt-1 w-full" />
+            </div>
+
+            <div>
+              <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                Location
+              </label>
+              <Input id="location" placeholder="Enter location" className="mt-1 w-full" />
+            </div>
+
+            <div>
+              <label htmlFor="time" className="block text-sm font-medium text-gray-700">
+                Time
+              </label>
+              <Input
+                id="time"
+                type="time"
+                className="mt-1 w-full"
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-end space-x-2 mt-6">
+            <Button
+              className="bg-red-600 text-white"
+              onClick={() => addRow("Z", "100", selectedLocation, "idk", "now")}
+            >
+              Confirm
+            </Button>
+            <Button
+              className="bg-gray-400 text-black"
+              onClick={() => document.activeElement.blur()}
+            >
+              Cancel
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
         <ImportButton updateData={updateData} location={selectedLocation} />
         
         </div>
