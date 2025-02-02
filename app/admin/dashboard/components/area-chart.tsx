@@ -21,12 +21,12 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "purple",
+    color: "#FF5",
     
   },
   mobile: {
     label: "Mobile",
-    color: "cyan",
+    color: "#99F",
   },
 } satisfies ChartConfig
 
@@ -38,13 +38,13 @@ type AreaChartStackedProps = {
 }
 export function AreaChartStacked({title, description, keys, chartData}: Readonly<AreaChartStackedProps>) {
   return (
-    <Card className="bg-color4">
-      <CardHeader className="text-white">
-        <CardTitle className="text-white">{title}</CardTitle>
+    <Card className="bg-color4 border-0">
+      <CardHeader className="text-purpleLight">
+        <CardTitle className="text-purpleLight">{title}</CardTitle>
         {/* <CardDescription>{description}</CardDescription> */}
       </CardHeader>
-      <CardContent className="text-white">
-        <ChartContainer config={chartConfig} className="text-white">
+      <CardContent className="text-purpleLight">
+        <ChartContainer config={chartConfig} className="text-purpleLight">
           <AreaChart
             accessibilityLayer
             data={chartData}
@@ -53,36 +53,37 @@ export function AreaChartStacked({title, description, keys, chartData}: Readonly
             //   right: 6,
             // }}
             style={{ overflow: 'visible' }}
-            className="text-white"
+            className="text-purpleLight"
           >
             
-            <CartesianGrid vertical={false} />
+            {/* <CartesianGrid vertical={false} className="text-purpleLight" /> */}
             <XAxis
               dataKey={keys[0]}
               tickLine={false}
               axisLine={false}
               tickMargin={16}
               tickFormatter={(value) => value}
-              
+              className="text-purpleLight"
             />
             <YAxis
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               tickCount={3}
-              className="text-white"
+              className="text-purpleLight"
             />
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent indicator="dot" />}
+              content={<ChartTooltipContent indicator="dot" className="text-purpleLight" />}
             />
-            <ChartLegend content={<ChartLegendContent />} />
+            {/* <ChartLegend content={<ChartLegendContent className="text-purpleLight" />} /> */}
             <Area
               dataKey={keys[1]}
               type="natural"
               fill="var(--color-mobile)"
               fillOpacity={0.4}
               stroke="var(--color-mobile)"
+              className="text-purpleLight"
             />
             <Area
               dataKey={keys[2]}
@@ -90,6 +91,7 @@ export function AreaChartStacked({title, description, keys, chartData}: Readonly
               fill="var(--color-desktop)"
               fillOpacity={0.4}
               stroke="var(--color-desktop)"
+              className="text-purpleLight"
             />
           </AreaChart>
         </ChartContainer>

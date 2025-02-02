@@ -16,6 +16,7 @@ export default {
 			purpleLight: '#AEB9E1',
 			purple1: '#8951FF',
 			color4: '#0A1330',
+			grey1: "#0A1330",
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -36,7 +37,7 @@ export default {
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				foreground: '#AEB9E1'
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
@@ -46,7 +47,7 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
+  			border: '#AEB9E1',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			chart: {

@@ -143,33 +143,33 @@ export default function Home() {
       <h1 className="ml-8 text-xl font-bold text-white">Reports Overview</h1>
 
       {/* Select Inputs for Date and Location */}
-      <div className="flex flex-row gap-4 ml-8 mt-2 text-gray-400 ">
+      <div className="flex flex-row gap-4 ml-8 mt-2 text-purpleLight">
         {/* Select Week */}
         <Select onValueChange={(value) => setSelectedWeek(value)}>
-          <SelectTrigger className="w-[200px] bg-color4">
+          <SelectTrigger className="w-[200px] bg-grey1  text-purpleLight font-medium">
             <SelectValue className = "bg-color4 " placeholder="📅 Select Week" />
           </SelectTrigger>
-          <SelectContent className="bg-color4">
-            <SelectItem className = "text-white bg-color4" value="0">January 1-7, 2024</SelectItem>
-            <SelectItem className = "text-white bg-color4" value="1">January 8-15, 2024</SelectItem>
-            <SelectItem className = "text-white bg-color4" value="2">January 16-24, 2024</SelectItem>
+          <SelectContent className="bg-grey1">
+            <SelectItem className = "text-white bg-grey1" value="0">January 1-7, 2024</SelectItem>
+            <SelectItem className = "text-white bg-grey1" value="1">January 8-15, 2024</SelectItem>
+            <SelectItem className = "text-white bg-grey1" value="2">January 16-24, 2024</SelectItem>
           </SelectContent>
         </Select>
 
         {/* Select Location */}
         <Select onValueChange={(value) => setSelectedLocation(value)}>
-          <SelectTrigger className="w-[200px] bg-color4">
-            <SelectValue  className = "bg-color4 "placeholder="⚲ Select Location" />
+          <SelectTrigger className="w-[200px] bg-grey1  text-purpleLight font-medium">
+            <SelectValue  className = "bg-color4" placeholder="⚲ Select Location" />
           </SelectTrigger>
-          <SelectContent className="bg-color4">
-            <SelectItem className = "text-white bg-color4" value="case">Case Dining Hall</SelectItem>
-            <SelectItem  className = "text-white bg-color4"value="shaw">Shaw Dining Hall</SelectItem>
-            <SelectItem  className = "text-white bg-color4"value="brody">Brody Dining Hall</SelectItem>
-            <SelectItem  className = "text-white bg-color4"value="synder">Synder Phillips Dining Hall</SelectItem>
+          <SelectContent className="bg-grey1">
+            <SelectItem className = "text-white bg-grey1" value="case">Case Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-grey1"value="shaw">Shaw Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-grey1"value="brody">Brody Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-grey1"value="synder">Synder Phillips Dining Hall</SelectItem>
           </SelectContent>
         </Select>
-        <div className="ml-auto mr-8 bg-purple ">
-          <Button className = "bg-purple`"onClick={() => {
+        <div className="ml-auto mr-8">
+          <Button className = "bg-purple1"onClick={() => {
             if (linkRef.current !== null) {
               linkRef.current.click();
             }
@@ -207,29 +207,29 @@ export default function Home() {
         <AreaChartLong
         />
       </div>
-      <div className="flex justify-between gap-6 p-6">
+      {/* <div className="flex justify-between gap-6 p-6">
         <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
+          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-left items-start">
+            <h1 className="text-purpleLight text-xl text-center">Average Output</h1>
+            <h1 className="text-white text-4xl text-center">21K</h1>
           </Card>
         </div>
         
         <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
+          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-left items-start">
+            <h1 className="text-purpleLight text-xl text-center">Average Input</h1>
+            <h1 className="text-white text-4xl text-center">10K</h1>
           </Card>
         </div>
         
         <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
+          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-left items-start">
+            <h1 className="text-purpleLight text-xl text-center">Average Traffic</h1>
+            <h1 className="text-white text-4xl text-center">19K</h1>
           </Card>
         </div>
 
-      </div>
+      </div> */}
     </div>
   );
 }
