@@ -87,13 +87,13 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
     <div>
       <div className="flex items-center mb-10">
       <p className="whitespace-nowrap mr-10 text-[20px] text-white font-semibold">
-        Item List
+      Nonprofit List
         </p>
         
         <div className="relative w-full">
       
       <Input
-          placeholder="⌕ Search for item..."
+          placeholder="⌕ Search for Nonprofit..."
           value={(table.getColumn("itemName")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("itemName")?.setFilterValue(event.target.value)
@@ -196,7 +196,7 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData, up
         </div>
       <div className="rounded-md mt-10">
         <div className="flex flex-row gap-4 ml-8 text-gray-400">
-          <h1 className="ml-[1px] m-1 text-[16px] font-medium text-white">All Items</h1>
+          <h1 className="ml-[1px] m-1 text-[16px] font-medium text-white">All Nonprofit</h1>
           {/* Select Location */}
           <Select onValueChange={(value) => setSelectedLocation(value)}>
             <SelectTrigger className="w-[200px] bg-color4">
