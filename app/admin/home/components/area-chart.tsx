@@ -21,11 +21,12 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "purple",
+    
   },
   mobile: {
     label: "Mobile",
-    color: "hsl(var(--chart-2))",
+    color: "cyan",
   },
 } satisfies ChartConfig
 
@@ -37,13 +38,13 @@ type AreaChartStackedProps = {
 }
 export function AreaChartStacked({title, description, keys, chartData}: Readonly<AreaChartStackedProps>) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
+    <Card className="bg-color4">
+      <CardHeader className="text-white">
+        <CardTitle className="text-white">{title}</CardTitle>
         {/* <CardDescription>{description}</CardDescription> */}
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
+      <CardContent className="text-white">
+        <ChartContainer config={chartConfig} className="text-white">
           <AreaChart
             accessibilityLayer
             data={chartData}
@@ -52,6 +53,7 @@ export function AreaChartStacked({title, description, keys, chartData}: Readonly
             //   right: 6,
             // }}
             style={{ overflow: 'visible' }}
+            className="text-white"
           >
             
             <CartesianGrid vertical={false} />
@@ -61,12 +63,14 @@ export function AreaChartStacked({title, description, keys, chartData}: Readonly
               axisLine={false}
               tickMargin={16}
               tickFormatter={(value) => value}
+              
             />
             <YAxis
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               tickCount={3}
+              className="text-white"
             />
             <ChartTooltip
               cursor={false}

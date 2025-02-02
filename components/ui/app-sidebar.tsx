@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Button } from "./button";
-
+import Logo from "../../public/logo.svg";
 // Menu items.
 const items = [
   {
@@ -57,7 +57,7 @@ export function AppSidebar() {
       <SidebarContent className="p-2 bg-color1">
         <SidebarGroup > 
           <SidebarGroupLabel >
-            <LogIn></LogIn>
+            <Logo></Logo>
             <div className="ml-2 text-lg text-white">
                 Table Share
             </div>

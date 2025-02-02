@@ -10,7 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { LinearChart } from "./components/linear-chart";
+import { AreaChartLong, LinearChart } from "./components/linear-chart";
+import { Card } from "@/components/ui/card";
 
 export default function Home() {
   const [consumptionData, setConsumptionData] = useState<
@@ -139,52 +140,56 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="ml-8 text-xl font-bold">Reports Overview</h1>
+      <h1 className="ml-8 text-xl font-bold text-white">Reports Overview</h1>
 
       {/* Select Inputs for Date and Location */}
-      <div className="flex flex-row gap-4 ml-8 mt-2">
+      <div className="flex flex-row gap-4 ml-8 mt-2 text-gray-400 ">
         {/* Select Week */}
         <Select onValueChange={(value) => setSelectedWeek(value)}>
-          <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="📅 Select Week" />
+          <SelectTrigger className="w-[200px] bg-color4">
+            <SelectValue className = "bg-color4 " placeholder="📅 Select Week" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="0">January 1-7, 2024</SelectItem>
-            <SelectItem value="1">January 8-15, 2024</SelectItem>
-            <SelectItem value="2">January 16-24, 2024</SelectItem>
+          <SelectContent className="bg-color4">
+            <SelectItem className = "text-white bg-color4" value="0">January 1-7, 2024</SelectItem>
+            <SelectItem className = "text-white bg-color4" value="1">January 8-15, 2024</SelectItem>
+            <SelectItem className = "text-white bg-color4" value="2">January 16-24, 2024</SelectItem>
           </SelectContent>
         </Select>
 
         {/* Select Location */}
         <Select onValueChange={(value) => setSelectedLocation(value)}>
-          <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="⚲ Select Location" />
+          <SelectTrigger className="w-[200px] bg-color4">
+            <SelectValue  className = "bg-color4 "placeholder="⚲ Select Location" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="case">Case Dining Hall</SelectItem>
-            <SelectItem value="shaw">Shaw Dining Hall</SelectItem>
-            <SelectItem value="brody">Brody Dining Hall</SelectItem>
-            <SelectItem value="synder">Synder Phillips Dining Hall</SelectItem>
+          <SelectContent className="bg-color4">
+            <SelectItem className = "text-white bg-color4" value="case">Case Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-color4"value="shaw">Shaw Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-color4"value="brody">Brody Dining Hall</SelectItem>
+            <SelectItem  className = "text-white bg-color4"value="synder">Synder Phillips Dining Hall</SelectItem>
           </SelectContent>
         </Select>
-        <div className="ml-auto mr-8">
-          <Button onClick={() => {
+        <div className="ml-auto mr-8 bg-color3 ">
+          <Button className = "bg-color3`"onClick={() => {
             if (linkRef.current !== null) {
               linkRef.current.click();
             }
           }}>Export Data</Button>
-          <a ref={linkRef} style={{display: "none"}} href={`data:text/plain;charset=utf-8, ${encodeURIComponent(cleanData)}`} download={"export.csv"}>Test</a>
+          <div className="bg-color3">
+          <a className="bg-color3"ref={linkRef} style={{display: "none"}} href={`data:text/plain;charset=utf-8, ${encodeURIComponent(cleanData)}`} download={"export.csv"}>Test</a>
+          </div>
         </div>
       </div>
 
       <div className=" flex flex-row space-x-4 w-full">
         <div className="flex flex-row w-full gap-16 p-8 mt-[-20px]">
-          <div className="w-1/2">
+          <div className="w-1/2 ">
             <AreaChartStacked
               title="Food Production vs. Food Unused"
               description={description}
               chartData={consumptionData}
               keys={["Date", "Production", "Unused"]}
+              
+              
             />
             
           </div>
@@ -198,14 +203,28 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-10">
       <div className="w-full p-8">
-        <LinearChart
-          title="Traffic"
-          description={description}
-          chartData={trafficData}
-          keys={["Hour", "Traffic"]}
+        <AreaChartLong
         />
+      </div>
+      <div className="flex flex-row gap-4 p-4 justify-items-center">
+      <div className="w-1/3 h-[400px]">
+      <Card className="bg-color4 size-60">
+          <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
+          <h1 className="text-white text-4xl text-center">Hello</h1>
+      </Card>
+      </div>
+      <div className="w-1/3 h-[400px]">
+      <Card className="bg-color4 size-60">
+          <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
+          <h1 className="text-white text-4xl text-center">Hello</h1>
+      </Card>
+      </div>
+      <div className="w-1/3 h-[400px]">
+      <Card className="bg-color4 size-60">
+          <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
+          <h1 className="text-white text-4xl text-center">Hello</h1>
+      </Card>
       </div>
       </div>
     </div>
