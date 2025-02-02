@@ -14,9 +14,18 @@ import { AreaChartLong } from "./components/linear-chart";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
+const options = [
+"Looking at your data over the past two weeks, you tend to overproduce on Tuesday's, you can increase your efficiency by 30% by reducing your production.",
+"Last week's shipment provided nutritious meals to homeless individuals, ensuring they had access to food and helping to reduce hunger in the community.",
+".",
+"..",
+"...",
+]
+
 export default function Home() {
   const [gptResponse, setGptResponse] = useState("");
   const [responses, setResponses] = useState<string[]>([]);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     async function getGPTResponse() {
@@ -49,7 +58,8 @@ export default function Home() {
               if (e.key === "Enter") {
                 const newData = [...responses];
                 newData.splice(0, 0, e.target.value);
-                newData.splice(0, 0, "Looking at your data over the past two weeks, you tend to overproduce on Tuesday's, you can increase your efficiency by 30% by reducing your production.");
+                newData.splice(0, 0, options[index]);
+                setIndex(index+1);
                 setResponses(newData); 
                 e.target.value = "";
               }

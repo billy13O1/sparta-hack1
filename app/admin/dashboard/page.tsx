@@ -181,7 +181,7 @@ export default function Home() {
       </div>
 
       <div className=" flex flex-row space-x-4 w-full">
-        <div className="flex flex-row w-full gap-16 p-8 mt-[-20px]">
+        <div className="flex flex-row w-full gap-16 p-8 mt-[0px]">
           <div className="w-1/2 ">
             <AreaChartStacked
               title="Food Production vs. Food Unused"
