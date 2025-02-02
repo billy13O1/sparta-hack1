@@ -12,12 +12,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Button } from "./button";
-import Logo from "../../public/logo.svg";
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "/home",
+    url: "/home/index.html",
     icon: Home,
   },
   {
@@ -36,8 +35,8 @@ const items = [
 //     icon: LogIn,
 //   },
   {
-    title: "Data",
-    url: "/admin/data",
+    title: "Donations", 
+    url: "/admin/donations",
     icon: Database,
   },
   {
@@ -48,11 +47,11 @@ const items = [
   
 ];
 const settings = [
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
-      },
+    // {
+    //     title: "Settings",
+    //     url: "#",
+    //     icon: Settings,
+    //   },
 ];
 
 export function AppSidebar() {
@@ -64,7 +63,7 @@ export function AppSidebar() {
         <SidebarGroup > 
           <SidebarGroupLabel >
             
-            <div className="ml-2 text-lg text-white space-x-2">
+            <div className="text-lg text-white space-x-2">
                 Table Share
             </div>
           </SidebarGroupLabel>
