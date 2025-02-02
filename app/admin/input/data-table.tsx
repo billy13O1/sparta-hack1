@@ -26,8 +26,15 @@ import {
 
 
 import { DataTablePagination } from "./DataTablePagination"
+import ImportButton from "@/components/ImportButton"
 
-export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
+type DataTableProps<TData, TValue> = {
+  columns: TData, 
+  data: TValue,
+  addRow: (itemName: string, quantity: string, location: string, category: string, time: string) => void,
+  updateData: () => void,
+}
+export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: Readonly<DataTableProps<TData, TValue>>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
@@ -68,8 +75,10 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
       </div>
       <div className="flex flex-row space-x-2 justify-end mb-[-34px]">
-        <Button className="w-40">Add New Item</Button>
-        <Button className="w-40">Import Data</Button>
+        <Button className="w-40" onClick={() => {
+          addRow("Z", "100", "case", "idk", "now");
+        }}>Add New Item</Button>
+        <ImportButton updateData={updateData} />
         </div>
       <div className="rounded-md border mt-10">
         

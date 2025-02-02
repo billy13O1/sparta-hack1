@@ -1,48 +1,49 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, Pencil, PencilIcon, PencilLine, PencilLineIcon, Trash2Icon } from "lucide-react"
-import { MoreHorizontal } from "lucide-react"
-import { Checkbox } from "@/components/ui/checkbox"
+import { ArrowUpDown, PencilLine, Trash2Icon } from "lucide-react"
+// import { MoreHorizontal } from "lucide-react"
+// import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu"
 export type Payment = {
   itemName: string
   category: string
   quantity: number
   location: string
+  time: string
 }
 
 export const columns: ColumnDef<Payment>[] = [
-    {
-        id: "select",
-        header: ({ table }) => (
-          <Checkbox
-            checked={
-              table.getIsAllPageRowsSelected() ||
-              (table.getIsSomePageRowsSelected() && "indeterminate")
-            }
-            onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-            aria-label="Select all"
-          />
-        ),
-        cell: ({ row }) => (
-          <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Select row"
-          />
-        ),
-        enableSorting: false,
-        enableHiding: false,
-      },
+    // {
+    //     id: "select",
+    //     header: ({ table }) => (
+    //       <Checkbox
+    //         checked={
+    //           table.getIsAllPageRowsSelected() ||
+    //           (table.getIsSomePageRowsSelected() && "indeterminate")
+    //         }
+    //         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+    //         aria-label="Select all"
+    //       />
+    //     ),
+    //     cell: ({ row }) => (
+    //       <Checkbox
+    //         checked={row.getIsSelected()}
+    //         onCheckedChange={(value) => row.toggleSelected(!!value)}
+    //         aria-label="Select row"
+    //       />
+    //     ),
+    //     enableSorting: false,
+    //     enableHiding: false,
+    //   },
   {
     accessorKey: "itemName",
     header: ({ column }) => {
@@ -110,15 +111,18 @@ export const columns: ColumnDef<Payment>[] = [
       },
   },
   {
-    id: "actions",
-    cell: ({  }) => {
- 
-      return (
-        <div>
-        <Button className= "w-min" variant="ghost"><PencilLine></PencilLine></Button>
-        <Button className= "w-min" variant="ghost"><Trash2Icon></Trash2Icon></Button>
-        </div>
-      )
-    },
-  },
+    accessorKey: "time",
+    header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            
+          >
+            Time
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+      },
+  }
 ]

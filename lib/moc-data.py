@@ -1,10 +1,15 @@
 from datetime import datetime as date
-import numpy as np
 import csv, os, random
 SCHOOLS = {
-    "MSU": ["case", "brody", "shaw"] 
+    "MSU": ["case","shaw","brody","synder"]
 }
-FOOD_TYPES = ["beef", "cheese", "milk", "rice", "bread"]
+FOOD_TYPES = [
+    ["Ground Beef","Meat"], 
+    ["American Cheese", "Dairy"],
+    ["Whole Milk", "Dairy"],
+    ["Brown Rice", "Grain"], 
+    ["White Bread", "Bakery"],
+]
 
 for name, halls in SCHOOLS.items():
     for hall in halls:
@@ -12,9 +17,10 @@ for name, halls in SCHOOLS.items():
         # Food Input
         data = [["date", "amount", "type"]]
         for day in range(1, 31+1):
+        # for day in range(1, 3+1):
             for _ in range(random.randint(1, 5)):
                 index = random.randint(0, len(FOOD_TYPES)-1)
-                data.append([date(2025, 1, day).strftime("%Y-%m-%d"), random.randint(10, 30), FOOD_TYPES[index]])
+                data.append([date(2025, 1, day).strftime("%Y-%m-%d"), random.randint(10, 30), FOOD_TYPES[index][0], FOOD_TYPES[index][1]])
             
         with open(os.path.join(folder, "input.csv"), 'w', newline='') as file:
             writer = csv.writer(file)

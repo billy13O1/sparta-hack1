@@ -1,107 +1,100 @@
 date,amount,type
-2025-01-01,22,rice
-2025-01-01,15,rice
-2025-01-01,28,cheese
-2025-01-01,20,beef
-2025-01-02,26,milk
-2025-01-02,18,bread
-2025-01-02,26,bread
-2025-01-02,11,bread
-2025-01-03,22,rice
-2025-01-03,28,beef
-2025-01-03,27,bread
-2025-01-04,22,beef
-2025-01-04,10,bread
-2025-01-04,10,cheese
-2025-01-04,19,bread
-2025-01-05,30,cheese
-2025-01-05,29,cheese
-2025-01-05,22,cheese
-2025-01-05,18,rice
-2025-01-06,11,beef
-2025-01-07,13,beef
-2025-01-07,28,cheese
-2025-01-07,23,beef
-2025-01-07,15,bread
-2025-01-08,20,beef
-2025-01-08,27,bread
-2025-01-08,11,milk
-2025-01-08,21,beef
-2025-01-09,28,cheese
-2025-01-10,30,milk
-2025-01-10,19,bread
-2025-01-10,21,beef
-2025-01-10,15,milk
-2025-01-11,12,milk
-2025-01-11,16,beef
-2025-01-11,23,cheese
-2025-01-11,29,cheese
-2025-01-11,22,cheese
-2025-01-12,21,beef
-2025-01-12,22,bread
-2025-01-12,22,milk
-2025-01-12,13,cheese
-2025-01-13,22,rice
-2025-01-13,28,beef
-2025-01-13,10,bread
-2025-01-13,17,milk
-2025-01-13,23,milk
-2025-01-14,20,beef
-2025-01-14,18,cheese
-2025-01-15,10,rice
-2025-01-15,12,bread
-2025-01-15,10,beef
-2025-01-15,23,cheese
-2025-01-16,26,rice
-2025-01-16,13,beef
-2025-01-16,25,cheese
-2025-01-16,28,rice
-2025-01-16,10,rice
-2025-01-17,16,bread
-2025-01-17,28,milk
-2025-01-17,29,cheese
-2025-01-17,20,milk
-2025-01-17,13,milk
-2025-01-18,25,milk
-2025-01-19,15,cheese
-2025-01-19,16,rice
-2025-01-20,29,beef
-2025-01-20,11,milk
-2025-01-21,30,milk
-2025-01-21,12,bread
-2025-01-21,20,bread
-2025-01-21,18,bread
-2025-01-22,28,beef
-2025-01-22,19,cheese
-2025-01-22,25,cheese
-2025-01-22,25,milk
-2025-01-22,22,milk
-2025-01-23,30,beef
-2025-01-23,24,bread
-2025-01-23,28,cheese
-2025-01-23,22,bread
-2025-01-23,26,rice
-2025-01-24,12,rice
-2025-01-24,13,beef
-2025-01-24,21,beef
-2025-01-24,24,milk
-2025-01-24,13,milk
-2025-01-25,15,cheese
-2025-01-25,24,beef
-2025-01-25,22,milk
-2025-01-25,18,rice
-2025-01-26,28,rice
-2025-01-26,12,rice
-2025-01-27,11,milk
-2025-01-28,13,bread
-2025-01-28,14,beef
-2025-01-29,18,beef
-2025-01-29,12,cheese
-2025-01-30,18,rice
-2025-01-30,23,bread
-2025-01-30,23,bread
-2025-01-30,11,beef
-2025-01-30,12,rice
-2025-01-31,20,rice
-2025-01-31,10,beef
-2025-01-31,26,milk
+2025-01-01,20,Whole Milk,Dairy
+2025-01-01,17,Whole Milk,Dairy
+2025-01-01,13,Whole Milk,Dairy
+2025-01-02,28,Brown Rice,Grain
+2025-01-03,29,American Cheese,Dairy
+2025-01-03,30,White Bread,Bakery
+2025-01-04,22,Whole Milk,Dairy
+2025-01-04,21,Brown Rice,Grain
+2025-01-04,27,Whole Milk,Dairy
+2025-01-05,18,White Bread,Bakery
+2025-01-05,25,Ground Beef,Meat
+2025-01-05,20,American Cheese,Dairy
+2025-01-05,10,Brown Rice,Grain
+2025-01-06,23,Ground Beef,Meat
+2025-01-06,12,White Bread,Bakery
+2025-01-06,21,Brown Rice,Grain
+2025-01-07,18,White Bread,Bakery
+2025-01-08,23,White Bread,Bakery
+2025-01-08,16,Whole Milk,Dairy
+2025-01-08,16,Brown Rice,Grain
+2025-01-09,16,Whole Milk,Dairy
+2025-01-09,10,White Bread,Bakery
+2025-01-09,11,White Bread,Bakery
+2025-01-09,15,Whole Milk,Dairy
+2025-01-10,20,Whole Milk,Dairy
+2025-01-10,28,American Cheese,Dairy
+2025-01-11,22,White Bread,Bakery
+2025-01-11,12,American Cheese,Dairy
+2025-01-11,17,White Bread,Bakery
+2025-01-11,18,Brown Rice,Grain
+2025-01-11,12,Whole Milk,Dairy
+2025-01-12,29,Ground Beef,Meat
+2025-01-12,18,Ground Beef,Meat
+2025-01-12,24,White Bread,Bakery
+2025-01-12,24,Whole Milk,Dairy
+2025-01-12,21,Brown Rice,Grain
+2025-01-13,21,American Cheese,Dairy
+2025-01-13,21,Whole Milk,Dairy
+2025-01-13,11,Whole Milk,Dairy
+2025-01-14,26,Brown Rice,Grain
+2025-01-14,30,White Bread,Bakery
+2025-01-14,30,Brown Rice,Grain
+2025-01-14,10,Ground Beef,Meat
+2025-01-15,21,Whole Milk,Dairy
+2025-01-15,18,White Bread,Bakery
+2025-01-15,18,Ground Beef,Meat
+2025-01-16,27,Brown Rice,Grain
+2025-01-16,28,American Cheese,Dairy
+2025-01-17,14,Whole Milk,Dairy
+2025-01-17,16,White Bread,Bakery
+2025-01-17,30,American Cheese,Dairy
+2025-01-17,19,American Cheese,Dairy
+2025-01-17,19,Whole Milk,Dairy
+2025-01-18,17,Whole Milk,Dairy
+2025-01-18,15,White Bread,Bakery
+2025-01-19,14,American Cheese,Dairy
+2025-01-19,19,Brown Rice,Grain
+2025-01-19,12,Whole Milk,Dairy
+2025-01-20,15,Brown Rice,Grain
+2025-01-20,27,White Bread,Bakery
+2025-01-21,29,American Cheese,Dairy
+2025-01-21,24,American Cheese,Dairy
+2025-01-21,19,American Cheese,Dairy
+2025-01-21,14,American Cheese,Dairy
+2025-01-21,30,Brown Rice,Grain
+2025-01-22,19,Whole Milk,Dairy
+2025-01-23,20,American Cheese,Dairy
+2025-01-23,30,Ground Beef,Meat
+2025-01-23,16,American Cheese,Dairy
+2025-01-24,30,Brown Rice,Grain
+2025-01-24,28,American Cheese,Dairy
+2025-01-24,16,White Bread,Bakery
+2025-01-24,22,American Cheese,Dairy
+2025-01-25,12,Brown Rice,Grain
+2025-01-25,24,American Cheese,Dairy
+2025-01-25,16,Brown Rice,Grain
+2025-01-25,28,American Cheese,Dairy
+2025-01-25,24,Ground Beef,Meat
+2025-01-26,24,Whole Milk,Dairy
+2025-01-26,15,Ground Beef,Meat
+2025-01-26,14,White Bread,Bakery
+2025-01-27,22,Ground Beef,Meat
+2025-01-27,29,Whole Milk,Dairy
+2025-01-27,20,American Cheese,Dairy
+2025-01-28,10,American Cheese,Dairy
+2025-01-28,29,Brown Rice,Grain
+2025-01-28,30,Brown Rice,Grain
+2025-01-28,25,Whole Milk,Dairy
+2025-01-29,25,Brown Rice,Grain
+2025-01-29,19,Brown Rice,Grain
+2025-01-29,21,White Bread,Bakery
+2025-01-29,18,Whole Milk,Dairy
+2025-01-29,22,Whole Milk,Dairy
+2025-01-30,27,Whole Milk,Dairy
+2025-01-30,28,Whole Milk,Dairy
+2025-01-30,11,American Cheese,Dairy
+2025-01-30,13,Ground Beef,Meat
+2025-01-31,10,American Cheese,Dairy
+2025-01-31,25,Ground Beef,Meat

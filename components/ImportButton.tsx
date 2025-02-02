@@ -1,12 +1,11 @@
 'use client'
-import { Button } from "@/components/ui/button";
-import { getMetrics, saveCSV } from "@/lib/mongo";
+import { saveCSV } from "@/lib/mongo";
+import { Button } from "./ui/button";
+import { useRef } from "react";
 
-type AddCSVButtonProps = {
-    title: string,
-}
+export default function ImportButton({updateData}) {
+    const inputRef = useRef<null | HTMLInputElement>(null);
 
-export default function AddCSVButton({title}: AddCSVButtonProps) {
     const processCSV = (csvData: string) => {
         return csvData.split('\n').slice(1).map((row) => {
             if (row === "") {
@@ -16,7 +15,8 @@ export default function AddCSVButton({title}: AddCSVButtonProps) {
         }).filter((value) => value !== null);
     };
     
-    const handleFileChange = (event) => {
+    // @ts-expect-error aaaa
+    const handleFileChange = (event) => { 
         const csvFiles: {[key: string]: string[][]} = {};
         let processed = 0;
         for (const file of event.target.files) {
@@ -25,7 +25,7 @@ export default function AddCSVButton({title}: AddCSVButtonProps) {
                 continue;
             }
             const reader = new FileReader();
-            reader.onload = (e: ProgressEvent<FileReader>) => {
+            reader.onload = async (e: ProgressEvent<FileReader>) => {
                 if (e.target === null) {
                     return;
                 }
@@ -34,7 +34,11 @@ export default function AddCSVButton({title}: AddCSVButtonProps) {
                 processed += 1;
                 if (processed === event.target.files.length) {
                     console.log(csvFiles);
-                    saveCSV("MSU", "case", csvFiles);
+                    await saveCSV("MSU", "case", csvFiles);
+                    updateData();
+                    if (inputRef.current !== null) {
+                        inputRef.current.value = "";
+                    }
                 }
             };
             reader.readAsText(file);
@@ -42,13 +46,13 @@ export default function AddCSVButton({title}: AddCSVButtonProps) {
     };
 
     return (
-        <div className="bg-[lightgrey] items-center rounded-lg p-5 flex gap-10 align-vertical h-min">
-            <p className="font-semibold">{title}</p>
-            <input type="file" accept=".csv" onChange={handleFileChange} multiple/>
-            
-            <Button onClick={() => {
-                getMetrics("MSU", "case");
-            }}>Add</Button>
+        <div className="">
+            <input ref={inputRef} type="file" accept=".csv" style={{ display: 'none' }} onChange={handleFileChange} multiple/>
+            <Button className="w-40" onClick={() => {
+                if (inputRef.current !== null) {
+                    inputRef.current.click();
+                }
+            }}>Import Data</Button>
         </div>
     );
 }
