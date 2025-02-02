@@ -125,11 +125,11 @@ const chartConfig = {
   },
   desktop: {
     label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    color: "#AEB9E1",
   },
   mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
+    label: "Pounds",
+    color: "#FF0",
   },
 } satisfies ChartConfig
 
@@ -151,13 +151,13 @@ export function AreaChartLong() {
   })
 
   return (
-    <Card className="bg-color4">
-      <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row text-white">
+    <Card className="bg-color4 border-0 mx-10">
+      <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row text-purpleLight">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Food Shipped in the last Month</CardTitle>
-          <CardDescription>
+          <CardTitle>Projected Consumption</CardTitle>
+          {/* <CardDescription>
             Showing total visitors for the last month
-          </CardDescription>
+          </CardDescription> */}
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
           <SelectTrigger
@@ -168,13 +168,13 @@ export function AreaChartLong() {
           </SelectTrigger>
           <SelectContent className="rounded-xl">
             <SelectItem value="90d" className="rounded-lg">
-              Last 3 months
+              Next 3 months
             </SelectItem>
             <SelectItem value="30d" className="rounded-lg">
-              Last 30 days
+              Next 30 days
             </SelectItem>
             <SelectItem value="7d" className="rounded-lg">
-              Last 7 days
+              Next 7 days
             </SelectItem>
           </SelectContent>
         </Select>
@@ -248,7 +248,7 @@ export function AreaChartLong() {
               stackId="a"
               
             />
-            <ChartLegend content={<ChartLegendContent />} />
+            {/* <ChartLegend content={<ChartLegendContent />} /> */}
           </AreaChart>
         </ChartContainer>
       </CardContent>
