@@ -14,6 +14,7 @@ export default {
 			black12: '#121C38',
 			purpleLight: '#AEB9E1',
 			purple1: '#8951FF',
+			color4: '#0A1330',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
