@@ -1,5 +1,5 @@
 "use client"
-import { Home, Settings, LogIn, LayoutDashboard, FileInput, Database } from "lucide-react"
+import { Home, Settings, LogIn, LayoutDashboard, FileInput, Database, Bot } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import {
   Sidebar,
@@ -39,7 +39,13 @@ const items = [
     title: "Data",
     url: "/admin/data",
     icon: Database,
-  }, 
+  },
+  {
+    title: "A.I",
+    url: "/admin/a.i",
+    icon: Bot,
+  },  
+  
 ];
 const settings = [
     {
@@ -57,8 +63,8 @@ export function AppSidebar() {
       <SidebarContent className="p-2 bg-black1D">
         <SidebarGroup > 
           <SidebarGroupLabel >
-            <Logo></Logo>
-            <div className="ml-2 text-lg text-white">
+            
+            <div className="ml-2 text-lg text-white space-x-2">
                 Table Share
             </div>
           </SidebarGroupLabel>

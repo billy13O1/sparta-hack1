@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { AreaChartLong, LinearChart } from "./components/linear-chart";
+
 import { Card } from "@/components/ui/card";
 
 export default function Home() {
@@ -183,52 +183,17 @@ export default function Home() {
       <div className=" flex flex-row space-x-4 w-full">
         <div className="flex flex-row w-full gap-16 p-8 mt-[-20px]">
           <div className="w-1/2 ">
-            <AreaChartStacked
+
+          </div>
+          <div className="w-1/2">
+          <AreaChartStacked
               title="Food Production vs. Food Unused"
               description={description}
               chartData={consumptionData}
               keys={["Date", "Production", "Unused"]}
-              
-              
-            />
-            
-          </div>
-          <div className="w-1/2">
-            <AreaChartStacked
-              title="Traffic"
-              description={description}
-              chartData={flowData}
-              keys={["Date", "Traffic"]}
             />
           </div>
         </div>
-      </div>
-      <div className="w-full p-8">
-        <AreaChartLong
-        />
-      </div>
-      <div className="flex justify-between gap-6 p-6">
-        <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
-          </Card>
-        </div>
-        
-        <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
-          </Card>
-        </div>
-        
-        <div className="flex-1 max-w-xs">
-          <Card className="bg-color4 p-6 h-[200px] flex flex-col justify-center items-center">
-            <h1 className="text-gray-500 text-xl text-center">Average Output</h1>
-            <h1 className="text-white text-4xl text-center">Hello</h1>
-          </Card>
-        </div>
-
       </div>
     </div>
   );
