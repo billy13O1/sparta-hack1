@@ -39,12 +39,12 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
             onValueChange={(value) => table.setPageSize(Number(value))}
             
           >
-            <SelectTrigger className="h-8 w-[70px] bg-color2">
-              <SelectValue placeholder={pageSize} className="text-white bg-color2"/>
+            <SelectTrigger className="h-8 w-[70px] bg-black12">
+              <SelectValue placeholder={pageSize} className="text-white bg-black12"/>
             </SelectTrigger>
-            <SelectContent side="top"className="bg-color2" >
+            <SelectContent side="top"className="bg-black12" >
               {[10, 20, 30, 40, 50].map((size) => (
-                <SelectItem key={size} value={`${size}`} className="bg-color2 text-white">
+                <SelectItem key={size} value={`${size}`} className="bg-black12 text-white">
                   {size}
                 </SelectItem>
               ))}
@@ -54,7 +54,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
         <div className="flex items-center space-x-2 text-white"> 
           <Button
             variant="outline"
-            className="h-8 w-8 p-0 bg-color2"
+            className="h-8 w-8 p-0 bg-black12"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -65,7 +65,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
 
           <Button
             variant="outline"
-            className="h-8 w-8 p-0 bg-color2"
+            className="h-8 w-8 p-0 bg-black12"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >

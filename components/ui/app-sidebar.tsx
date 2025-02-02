@@ -54,35 +54,35 @@ export function AppSidebar() {
   return (
     
     <Sidebar >
-      <SidebarContent className="p-2 bg-color1">
+      <SidebarContent className="p-2 bg-black1D">
         <SidebarGroup > 
           <SidebarGroupLabel >
             <LogIn></LogIn>
-            <div className="ml-2 text-lg text-white">
+            <div className="ml-2 text-[20px] text-white font-normal">
                 Table Share
             </div>
           </SidebarGroupLabel>
           <SidebarGroupContent >
             <SidebarMenu >
               {items.map((item) => (
-                <SidebarMenuItem key={item.title} className="mt-1">
-                  <SidebarMenuButton asChild>
+                <SidebarMenuItem key={item.title} className="group/item mt-1">
+                  <SidebarMenuButton asChild className="group-hover/item:bg-purple1">
                     <a href={item.url}>
-                    <div className="text-white">
+                    <div className="text-purple1 group-hover/item:text-white">
                       <item.icon />
                     </div>
-                      <span className="text-lg text-white">{item.title}</span>
+                      <span className="text-[14px]  text-purpleLight group-hover/item:text-white">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
               <hr></hr>
                 {settings.map((setting) => (
-                  <SidebarMenuItem key={setting.title} className="text-white">
-                    <SidebarMenuButton asChild>
-                      <a href={setting.url}>
+                  <SidebarMenuItem key={setting.title} className="group/item">
+                    <SidebarMenuButton asChild className="hover/item:bg-purple1">
+                      <a href={setting.url} className="text-purple1 group-hover/item:text-white">
                         <setting.icon />
-                        <span className="text-lg text-white">{setting.title}</span>
+                        <span className="text-[14px] text-purpleLight group-hover/item:text-white">{setting.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -93,7 +93,7 @@ export function AppSidebar() {
         
       </SidebarContent>
 
-        <div className="flex justify-start bg-color1">
+        <div className="flex justify-start bg-black1D">
           <Button
             variant="ghost"
             onClick={() => router.push('/logIn')}

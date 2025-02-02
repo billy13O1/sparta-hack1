@@ -59,7 +59,7 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto p-5">
+    <div className="container mx-auto px-5 mt-[-15px]">
       <DataTable columns={tableColumns} data={tableData} addRow={addRow} updateData={updateData} />
       {/* <DataTable columns={columns} data={tableData} addRow={addRow} /> */}
     </div>

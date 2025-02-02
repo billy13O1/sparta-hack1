@@ -48,7 +48,7 @@ export default function ImportButton({updateData}) {
     return (
         <div className="">
             <input ref={inputRef} type="file" accept=".csv" style={{ display: 'none' }} onChange={handleFileChange} multiple/>
-            <Button className="w-40 bg-color3" onClick={() => {
+            <Button className="w-40 bg-purple1" onClick={() => {
                 if (inputRef.current !== null) {
                     inputRef.current.click();
                 }

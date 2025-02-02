@@ -56,8 +56,8 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: 
 
   return (
     <div>
-      <div className="flex items-center py-4">
-      <p className="whitespace-nowrap mr-10 font-bold text-xl text-white">
+      <div className="flex items-center">
+      <p className="whitespace-nowrap mr-10 text-[20px] text-white font-semibold">
         Item List
         </p>
         
@@ -69,13 +69,14 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: 
           onChange={(event) =>
             table.getColumn("itemName")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm text-white placeholder-white"
+          className="max-w-sm text-purpleLight placeholder-purpleLight bg-black12 text-[12px] font-medium"
+          style={{border: 0}}
         />
         </div>
 
       </div>
       <div className="flex flex-row space-x-2 justify-end mb-[-34px]">
-        <Button className="w-40 bg-color3" onClick={() => {
+        <Button className="w-40 bg-purple1" onClick={() => {
           addRow("Z", "100", "case", "idk", "now");
         }}>Add New Item</Button>
         <ImportButton updateData={updateData} />
