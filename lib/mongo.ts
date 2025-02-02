@@ -1,8 +1,8 @@
 'use server'
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.9oy4i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-
+// const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.9oy4i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = process.env.MONGODB_URI
 const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
