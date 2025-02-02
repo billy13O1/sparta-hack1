@@ -26,43 +26,46 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
   return (
     <div className="flex items-center justify-between px-2 py-4">
       {/* Left Side - Showing Row Range */}
-      <div className="text-sm text-muted-foreground">
+      <div className="text-sm text-muted-foreground text-white">
         {totalRows > 0 ? `${startRow} - ${endRow} of ${totalRows}` : "No data"}
       </div>
 
       {/* Right Side - Pagination Controls */}
       <div className="flex items-center space-x-6 lg:space-x-8">
-        <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Rows per page</p>
+        <div className="flex items-center space-x-2 text-white">
+          <p className="text-sm font-medium text-white">Rows per page</p>
           <Select
             value={`${pageSize}`}
             onValueChange={(value) => table.setPageSize(Number(value))}
+            
           >
-            <SelectTrigger className="h-8 w-[70px]">
-              <SelectValue placeholder={pageSize} />
+            <SelectTrigger className="h-8 w-[70px] bg-color2">
+              <SelectValue placeholder={pageSize} className="text-white bg-color2"/>
             </SelectTrigger>
-            <SelectContent side="top">
+            <SelectContent side="top"className="bg-color2" >
               {[10, 20, 30, 40, 50].map((size) => (
-                <SelectItem key={size} value={`${size}`}>
+                <SelectItem key={size} value={`${size}`} className="bg-color2 text-white">
                   {size}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 text-white"> 
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            className="h-8 w-8 p-0 bg-color2"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <span className="sr-only">Go to previous page</span>
+            
             <ChevronLeft />
           </Button>
+
           <Button
             variant="outline"
-            className="h-8 w-8 p-0"
+            className="h-8 w-8 p-0 bg-color2"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >

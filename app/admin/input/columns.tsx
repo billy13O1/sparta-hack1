@@ -76,6 +76,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "quantity",
     header: ({ column }) => {
       return (
+        <div className="color-white">
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -83,6 +84,7 @@ export const columns: ColumnDef<Payment>[] = [
           Quantity
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+        </div>
       );
     },
     cell: ({ row }) => {

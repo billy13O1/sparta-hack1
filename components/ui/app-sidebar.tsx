@@ -52,34 +52,37 @@ const settings = [
 export function AppSidebar() {
     const router = useRouter()
   return (
-    <Sidebar>
-      <SidebarContent className="m-2">
-        <SidebarGroup>
-          <SidebarGroupLabel>
+    
+    <Sidebar >
+      <SidebarContent className="p-2 bg-color1">
+        <SidebarGroup > 
+          <SidebarGroupLabel >
             <LogIn></LogIn>
-            <div className="ml-2 text-lg">
+            <div className="ml-2 text-lg text-white">
                 Table Share
             </div>
           </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
+          <SidebarGroupContent >
+            <SidebarMenu >
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} className="mt-1">
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
+                    <div className="text-white">
                       <item.icon />
-                      <span className="text-lg">{item.title}</span>
+                    </div>
+                      <span className="text-lg text-white">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
               <hr></hr>
                 {settings.map((setting) => (
-                  <SidebarMenuItem key={setting.title} className="">
+                  <SidebarMenuItem key={setting.title} className="text-white">
                     <SidebarMenuButton asChild>
                       <a href={setting.url}>
                         <setting.icon />
-                        <span className="text-lg">{setting.title}</span>
+                        <span className="text-lg text-white">{setting.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -90,15 +93,16 @@ export function AppSidebar() {
         
       </SidebarContent>
 
-        <div className="flex justify-start">
+        <div className="flex justify-start bg-color1">
           <Button
             variant="ghost"
             onClick={() => router.push('/logIn')}
             className="align-bottom h-12 mb-1 text-lg text-gray"
           >
-            <p>Sign out</p>
+            <p className="text-white">Sign out</p>
           </Button>
         </div>
     </Sidebar>
+    
   )
 }
