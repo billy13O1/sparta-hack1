@@ -82,12 +82,14 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              <hr></hr>
+              {/* <hr></hr> */}
                 {settings.map((setting) => (
                   <SidebarMenuItem key={setting.title} className="group/item">
-                    <SidebarMenuButton asChild className="hover/item:bg-purple1">
-                      <a href={setting.url} className="text-purple1 group-hover/item:text-white">
+                    <SidebarMenuButton asChild className="group-hover/item:bg-purple1">
+                      <a href={setting.url}>
+                      <div className="text-purple1 group-hover/item:text-white">
                         <setting.icon />
+                      </div>
                         <span className="text-[14px] text-purpleLight group-hover/item:text-white">{setting.title}</span>
                       </a>
                     </SidebarMenuButton>
@@ -99,13 +101,13 @@ export function AppSidebar() {
         
       </SidebarContent>
 
-        <div className="flex justify-start bg-black1D">
+        <div className="flex justify-start bg-black1D group/item">
           <Button
             variant="ghost"
             onClick={() => router.push('/logIn')}
-            className="align-bottom h-12 mb-1 text-lg text-gray"
+            className="align-bottom h-12 ml-5 mb-1 text-lg  group-hover/item:bg-purple1"
           >
-            <p className="text-white">Sign out</p>
+            <p className="text-purpleLight group-hover/item:text-white">Sign out</p>
           </Button>
         </div>
     </Sidebar>

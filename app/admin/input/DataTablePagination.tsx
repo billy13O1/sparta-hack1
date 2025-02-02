@@ -26,35 +26,34 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
   return (
     <div className="flex items-center justify-between px-2 py-4">
       {/* Left Side - Showing Row Range */}
-      <div className="text-sm text-muted-foreground text-white">
+      <div className="text-[14px] text-muted-foreground text-white">
         {totalRows > 0 ? `${startRow} - ${endRow} of ${totalRows}` : "No data"}
       </div>
 
       {/* Right Side - Pagination Controls */}
       <div className="flex items-center space-x-6 lg:space-x-8">
-        <div className="flex items-center space-x-2 text-white">
-          <p className="text-sm font-medium text-white">Rows per page</p>
+        <div className="flex items-center space-x-2 text-purpleLight">
+          <p className="text-[14px] font-medium text-purpleLight">Rows per page</p>
           <Select
             value={`${pageSize}`}
             onValueChange={(value) => table.setPageSize(Number(value))}
-            
           >
             <SelectTrigger className="h-8 w-[70px] bg-black12">
-              <SelectValue placeholder={pageSize} className="text-white bg-black12"/>
+              <SelectValue placeholder={pageSize} className="text-purpleLight bg-black12"/>
             </SelectTrigger>
             <SelectContent side="top"className="bg-black12" >
               {[10, 20, 30, 40, 50].map((size) => (
-                <SelectItem key={size} value={`${size}`} className="bg-black12 text-white">
+                <SelectItem key={size} value={`${size}`} className="bg-black12 text-purpleLight">
                   {size}
-                </SelectItem>
+                </SelectItem >
               ))}
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center space-x-2 text-white"> 
+        <div className="flex items-center space-x-2 text-purpleLight"> 
           <Button
             variant="outline"
-            className="h-8 w-8 p-0 bg-black12"
+            className="h-8 w-8 p-0 bg-black12 border-purpleLight hover:bg-slate-600"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -65,7 +64,7 @@ export function DataTablePagination<TData>({ table }: DataTablePaginationProps<T
 
           <Button
             variant="outline"
-            className="h-8 w-8 p-0 bg-black12"
+            className="h-8 w-8 p-0 bg-black12 border-purpleLight hover:bg-slate-600"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
