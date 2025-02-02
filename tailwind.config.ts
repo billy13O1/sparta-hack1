@@ -12,6 +12,7 @@ export default {
   		colors: {
 			black1D: '#1D2744',
 			black12: '#121C38',
+			black0B: '#0B1739',
 			purpleLight: '#AEB9E1',
 			purple1: '#8951FF',
 			color4: '#0A1330',

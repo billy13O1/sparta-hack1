@@ -82,16 +82,16 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: 
         <ImportButton updateData={updateData} />
         
         </div>
-      <div className="rounded-md border border-gray-700 mt-10">
+      <div className="rounded-md mt-10">
         
-        <h1 className="m-5 text-lg text-white">All Items</h1>
-        <hr></hr>
-        <Table >
-          <TableHeader >
+        <h1 className="m-5 text-[16px] font-medium text-white">All Items</h1>
+        {/* <hr className="border-purpleLight"></hr> */}
+        <Table>
+          <TableHeader className="group/item">
             {table.getHeaderGroups().map(headerGroup => (
               <TableRow key={headerGroup.id} className="">
                 {headerGroup.headers.map(header => (
-                  <TableHead key={header.id} className="text-center text-white">
+                  <TableHead key={header.id} className=" text-white font-medium text-[10px] text-left group-hover/item:bg-black12">
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 ))}
@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({ columns, data, addRow, updateData }: 
                     {row.getVisibleCells().map(cell => (
                     <TableCell
                         key={cell.id}
-                        className={`text-center ${cell.column.id === "itemName" ? "text-white" : "text-gray-400"}`}
+                        className={`px-8 py-4 text-left font-medium text-[12px] bg-black12 ${cell.column.id === "itemName" ? "text-white" : "text-purpleLight"}`}
                     >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>

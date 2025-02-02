@@ -168,14 +168,14 @@ export default function Home() {
             <SelectItem  className = "text-white bg-color4"value="synder">Synder Phillips Dining Hall</SelectItem>
           </SelectContent>
         </Select>
-        <div className="ml-auto mr-8 bg-color3 ">
-          <Button className = "bg-color3`"onClick={() => {
+        <div className="ml-auto mr-8 bg-purple ">
+          <Button className = "bg-purple`"onClick={() => {
             if (linkRef.current !== null) {
               linkRef.current.click();
             }
           }}>Export Data</Button>
-          <div className="bg-color3">
-          <a className="bg-color3"ref={linkRef} style={{display: "none"}} href={`data:text/plain;charset=utf-8, ${encodeURIComponent(cleanData)}`} download={"export.csv"}>Test</a>
+          <div className="bg-purple">
+          <a className="bg-purple" ref={linkRef} style={{display: "none"}} href={`data:text/plain;charset=utf-8, ${encodeURIComponent(cleanData)}`} download={"export.csv"}>Test</a>
           </div>
         </div>
       </div>
